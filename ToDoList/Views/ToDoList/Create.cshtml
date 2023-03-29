@@ -1,0 +1,38 @@
+﻿@model ToDoList.Models.TodoList
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Task</h1>
+
+<hr />
+
+<div class="row mt-3">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mt-3">
+                <label asp-for="ToDo" class="control-label">To Do</label>
+                <input asp-for="ToDo" class="form-control" placeholder="Task"/>
+                <span asp-validation-for="ToDo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label asp-for="DateTime" class="control-label">Date and Time</label>
+                <input asp-for="DateTime" class="form-control" placeholder="Time"/>
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-primary" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

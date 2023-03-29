@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ToDoList.Models.TodoList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Tasks</h1>
+
+<hr />
+
+<a class="btn btn-primary" asp-action="Create">Create a new task</a>
+
+<br />
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToDo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                    <a class="btn btn-outline-secondary" asp-action="TaskDetails" asp-route-id="@item.Id">Details</a> 
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
